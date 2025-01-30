@@ -12,6 +12,9 @@ import JobPage from './pages/JobPage'
 import { jobLoader } from './loaders/JobLoader'
 import AddJobPage from './pages/AddJobPage'
 
+import AppLayout from './layouts/AppLayout'
+import AppContent from './pages/AppContent'
+
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<MainLayout />} key="main-layout">
@@ -21,6 +24,21 @@ const router = createBrowserRouter(
       <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} key="job-page" />,
       <Route path='*' element={<NotFoundPage />} key="not-found-page" />,
     </Route>
+
+  ])
+   
+)
+
+const appRouter = createBrowserRouter(
+  createRoutesFromElements([
+    <Route path="/app" element={<AppLayout />} key="app-layout">
+      <Route index element={<AppContent />} key="appcontent-page" />,
+      {/* <Route path='/jobs' element={<JobsPage />} key="jobs-page" />,
+      <Route path='/add-job' element={<AddJobPage />} key="add-job-page" />,
+      <Route path='/jobs/:id' element={<JobPage />} loader={jobLoader} key="job-page" />,
+      <Route path='*' element={<NotFoundPage />} key="not-found-page" />, */}
+    </Route>
+
   ])
    
 )
@@ -28,7 +46,7 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <div>
-      <RouterProvider router={router} />
+      <RouterProvider router={appRouter} />
     </div>
   )
 }
