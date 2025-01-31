@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
+
+
+  @theme {
+    --font-sans: InterVariable, sans-serif;
+  }
+
+* {
+    font-feature-settings: 
+    "cv11" 1,  /* Enable slashed zero */
+    "ss01" 1,  /* Single-story 'a' */
+    "tnum" 1;  /* Tabular numbers */
+}

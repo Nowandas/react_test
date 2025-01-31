@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import {toast} from 'react-toastify'
 
-const AddJobPage = () => {
+const AddJobPage = ({addJobSubmit}) => {
 
     const [title, setTitle] = useState('');
     const [type, setType] = useState('Full-Time');
@@ -12,12 +15,15 @@ const AddJobPage = () => {
     const [contactEmail, setContactEmail] = useState('');
     const [contactPhone, setContactPhone] = useState('');
 
+    const navigate = useNavigate();
+
+
     const submitForm = (e) => {
         e.preventDefault();
 
         const newJob = {
             title,
-            type,
+            type, 
             location,
             description,
             salary,
@@ -28,16 +34,20 @@ const AddJobPage = () => {
                 contactPhone
               }
             }
-        }
+            console.log(newJob);
+            addJobSubmit(newJob);
+            toast.success('Job Added Succesfully!')
+            return navigate('/jobs')
+        };
 
   return (
     <div>
          <section className="bg-indigo-50">
-      <div className="container m-auto max-w-2xl py-24">
+      <div className="container m-auto max-w-2xl py-24 border-none">
         <div
           className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
         >
-          <form onSubmit={submitForm}>
+          <form  className='border-none' onSubmit={submitForm}>
             <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
             <div className="mb-4">
@@ -216,5 +226,10 @@ const AddJobPage = () => {
     </div>
   )
 }
+
+AddJobPage.propTypes = {
+    addJobSubmit:PropTypes.func,
+};
+
 
 export default AddJobPage

@@ -28,7 +28,7 @@ const JobListing = ({job}) => {
                         {description}
                     </div>
 
-                    <button className='text-indigo-500 mb-5 hover:text-indigo-600' onClick={() => setShowFullDescription((prevState) => !prevState)}>
+                    <button className='text-indigo-500 mb-5 hover:text-indigo-600 text-justify' onClick={() => setShowFullDescription((prevState) => !prevState)}>
                         {showFullDescription ? 'Less' : 'More'}
                     </button>
 
