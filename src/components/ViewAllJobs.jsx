@@ -1,4 +1,7 @@
 import {Link} from 'react-router-dom'
+
+import { Button } from '@carbon/react';
+
 const ViewAllJobs = () => {
   return (
     <>
@@ -7,6 +10,8 @@ const ViewAllJobs = () => {
         to="/jobs"
         className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
         >View All Jobs</Link>
+       <Button>Example usage</Button>
+
     </section>
     </>
   )

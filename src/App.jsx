@@ -13,6 +13,7 @@ import { jobLoader } from './loaders/JobLoader'
 import AddJobPage from './pages/AddJobPage'
 import AppLayout from './layouts/AppLayout'
 import AppContent from './pages/AppContent'
+import EditJobPage from './pages/EditJobPage'
 
 const App = () => {
   
@@ -32,6 +33,22 @@ const App = () => {
     return;
   }
 
+  const updateJob = async (job) => {
+    console.log(job);
+    const res = await fetch(`/api/jobs/${job.id}`, {
+      method: 'PUT',
+      headers : {
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(job),
+    });
+    console.log('Added new Job')
+    console.log(job)
+    console.log(res.text)
+    return;
+  }
+
+
   // delete job
   const deleteJob = async (id) => {
     const res = await fetch(`/api/jobs/${id}`, {
@@ -48,6 +65,7 @@ const App = () => {
         <Route index element={<HomePage />} key="home-page" />,
         <Route path='/jobs' element={<JobsPage />} key="jobs-page" />,
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} key="add-job-page" />,
+        <Route path='/edit/job/:id' element={<EditJobPage updateJobSubmit={updateJob} />}  loader={jobLoader} key="edit-job-page" />,
         <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader} key="job-page" />,
         <Route path='*' element={<NotFoundPage />} key="not-found-page" />,
       </Route>

@@ -2,6 +2,7 @@
 
 @tailwind utilities;
 
+@use '@carbon/react';
 
   @theme {
     --font-sans: InterVariable, sans-serif;
