@@ -61,6 +61,10 @@ const JobPage = ({deleteJob}) => {
               <h1 className="text-3xl font-bold mb-4">
                 {job.title}
               </h1>
+              {job.is_featured ? 
+                            <span className="inline-flex mb-6 items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">Featured</span> : null
+                    }
+
               <div
                 className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
               >

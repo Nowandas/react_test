@@ -22,6 +22,12 @@ const JobListing = ({job}) => {
                     <div className="mb-6">
                         <div className="text-gray-600 my-2">{job.type}</div>
                         <h3 className="text-xl font-bold">{job.title}</h3>
+
+
+                        {job.is_featured ? 
+                            <span className="inline-flex mt-6 items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">Featured</span> : null
+                    }
+
                     </div>
         
                     <div className="mb-5">
