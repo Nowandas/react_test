@@ -2,6 +2,7 @@ import JobListing from "./JobListing"
 import PropTypes from "prop-types";
 import {useState, useEffect} from "react";
 import Spinner from "./Spinner";
+import NoJobsAvailable from "./NoJobsAvailable";
 
 const JobListings = ({isHome = false}) => {
   const [jobs, setJobs] = useState([]);
@@ -25,7 +26,7 @@ const JobListings = ({isHome = false}) => {
 
   return (
     <>
-    <section className="bg-blue-50 px-4 py-10">
+    { jobs.length > 0 ? <section className="bg-blue-50 px-4 py-10">
       <div className="container-xl lg:container m-auto">
         <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
           {isHome ? "Featured Jobs" : "All Jobs"}
@@ -41,7 +42,7 @@ const JobListings = ({isHome = false}) => {
             )}
 
       </div>
-    </section>
+    </section> : <NoJobsAvailable/> }
     </>
   )
 }
