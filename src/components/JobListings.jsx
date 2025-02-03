@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import {useState, useEffect} from "react";
 import Spinner from "./Spinner";
 import NoJobsAvailable from "./NoJobsAvailable";
+import ErrorMessage from "./ErrorMessage";
 
 const JobListings = ({isHome = false}) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error,setError] = useState(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -17,6 +19,7 @@ const JobListings = ({isHome = false}) => {
         setJobs(data);
       } catch (error) {
         console.log('Error fetching data', error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -42,7 +45,9 @@ const JobListings = ({isHome = false}) => {
             )}
 
       </div>
-    </section> : <NoJobsAvailable/> }
+    </section> : 
+      error ?<ErrorMessage errorMessage={error.message}/> : <NoJobsAvailable /> 
+    }
     </>
   )
 }
