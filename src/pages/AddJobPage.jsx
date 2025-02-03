@@ -10,6 +10,7 @@ const AddJobPage = ({addJobSubmit}) => {
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
     const [salary, setSalary] = useState('Under $50K');
+    const [isFeatured, setIsFeatured] = useState(false);
     const [companyName, setCompanyName] = useState('');
     const [companyDescription, setCompanyDescription] = useState('');
     const [contactEmail, setContactEmail] = useState('');
@@ -27,6 +28,7 @@ const AddJobPage = ({addJobSubmit}) => {
             location,
             description,
             salary,
+            is_featured: isFeatured,
             company: {
                 name: companyName,
                 description: companyDescription,
@@ -68,6 +70,22 @@ const AddJobPage = ({addJobSubmit}) => {
                 <option value="Internship">Internship</option>
               </select>
             </div>
+
+            <div className="mb-4">
+                <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
+                  >Featured</label>
+                <select
+                  id="is_featured"
+                  name="is_featured"
+                  className="border rounded w-full py-2 px-3"
+                  required
+                  value={isFeatured}
+                  onChange={(e) => setIsFeatured(e.target.value)}
+                >
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
 
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2"

@@ -32,6 +32,7 @@ const EditJobPage = ({updateJobSubmit}) => {
             location,
             description,
             salary,
+            is_featured: isFeatured,
             company: {
                 name: companyName,
                 description: companyDescription,
