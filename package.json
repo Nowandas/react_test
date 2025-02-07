@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@carbon/react": "^1.75.0",
+    "@carbon/styles": "^1.74.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.0.0",
