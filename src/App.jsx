@@ -14,6 +14,9 @@ import AddJobPage from './pages/AddJobPage'
 import AppLayout from './layouts/AppLayout'
 import AppContent from './pages/AppContent'
 import EditJobPage from './pages/EditJobPage'
+import LoginPage from './pages/LoginPage'
+
+import "@carbon/styles/css/styles.css"; // Carbon styles
 
 const App = () => {
   
@@ -62,7 +65,8 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements([
       <Route path="/" element={<MainLayout />} key="main-layout">
-        <Route index element={<HomePage />} key="home-page" />,
+        <Route index element={<LoginPage />} key="home-page" />,
+        <Route  path='/home' element={<HomePage />} key="home-page" />,
         <Route path='/jobs' element={<JobsPage />} key="jobs-page" />,
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} key="add-job-page" />,
         <Route path='/edit/job/:id' element={<EditJobPage updateJobSubmit={updateJob} />}  loader={jobLoader} key="edit-job-page" />,
